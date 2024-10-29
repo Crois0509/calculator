@@ -35,3 +35,8 @@
     - 이를 통해 본래 Calculate의 메소드인 calculate를 사용할 때 발생할 수 있었던 예외상황(잘못된 연산자 입력 등)을 방지하고, Calculate에서 할 일을 나누어 가짐으로써 불필요한 코드의 사용을 줄일 수 있었다.
 
 - **Lv.4 작성 완료 후 Lv.3 와 비교하여 개선된 점(hint.클래스간의 결합도, 의존성(의존성역전원칙))**
+    - AdstractOperation 프로토콜을 만들고, Calculator 클래스가 이를 준수하게 만들었다. 프로토콜에는 `firstNumber`와 `secondNumber`라는 Int타입의 변수를 만들어 Calculator가 프로퍼티를 가지게끔 하였다.
+    - Calculator에 AdstractOperation 프로토콜을 준수하게 했기 때문에 자식 클래스인 다른 연산자 클래스는 프로토콜을 선언해주지 않아도 된다. 만약 선언하게 된다면 이는 중복 준수가 되어 에러가 발생한다.
+    - 반대로 자식 클래스인 연산자 클래스에 AbstractOperation 프로토콜을 준수하게 하면 어떻게 될까? Calculator 클래스에 `firstNumber` 프로퍼티와 `secondeNumber` 프로퍼티를 남겨둔 채 연산자 클래스에 AbstractOperation 프로토콜을 준수하게 하면 아무런 변화가 없다. 부모 클래스에서 프로토콜을 준수하고 있으면 자식 클래스에서 별도로 준수하지 않더라도 문제가 발생하지 않는 것 같다
+    - 이 때, Calculator 클래스에서 `firstNumber`와 `secondNumber` 프로퍼티를 지우면 곧바로 에러가 발생한다. AbstractOperation 프로토콜을 준수하게 만든 연산자 클래스가 프로토콜을 준수하지 않았다는 오류가 발생하는 것이다.
+    - 이를 통해 알 수 있는건 '상속'은 클래스간의 의존성과 연결이 강하게 하는 것을 알 수 있었다.

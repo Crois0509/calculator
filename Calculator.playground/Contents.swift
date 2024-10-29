@@ -1,7 +1,14 @@
 import UIKit
 
+// Lv.4 추상화
+protocol AbstractOperation {
+    var firstNumber: Int { get }
+    var secondNumber: Int { get }
+}
+
+// Lv.4 추상화, 프로토콜 준수하기
 // Lv.1 Calculator 클래스 생성하기
-class Calculator {
+class Calculator: AbstractOperation {
     // Lv.3 Calculator 코드 수정하기
     // 프로퍼티 선언
     var firstNumber: Int
