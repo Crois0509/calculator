@@ -26,6 +26,7 @@ class Calculator {
 
 // Lv.1 인스턴스화 후 연산하여 출력하기
 let calculator = Calculator()
+
 print(calculator.calculate(operatorSymbol: "+", firstNumber: 5, secondNumber: 5)) // 10
 print(calculator.calculate(operatorSymbol: "-", firstNumber: 5, secondNumber: 5)) // 0
 print(calculator.calculate(operatorSymbol: "*", firstNumber: 5, secondNumber: 5)) // 25
