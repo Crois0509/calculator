@@ -22,7 +22,9 @@
     - AdstractOperation라는 **추상화**된 프로토콜 만들기
     - 기존에 구현한 AddOperation(더하기), SubstractOperation(빼기), MultiplyOperation(곱하기), DivideOperation(나누기) 클래스들과 관계를 맺고 Calculator 클래스의 내부 코드를 변경
     - 스위프트의 어떤 문법을 이용하여 추상화할 수 있을지 생각해 봅시다
-### 
+    
+*** 
+
 - **Lv.2 진행 중 에외처리 상황에 대한 고민**
     - Lv.1의 상태에서 calculate 메서드를 사용했을 때, 매개변수인 operatorSymbol 값으로 지정되지 않은 연산자(공백값이나 기타 다른 String 값)가 사용될 경우에 대한 대책이 없다.
     - 때문에 이를 대처할 수 있도록 if문에 else 라는 경우의 수를 만들고, 지정되지 않은 연산자가 사용되었을 때 사용자에게 경고를 보내는 코드를 추가하였다.
