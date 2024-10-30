@@ -2,8 +2,8 @@ import UIKit
 
 // Lv.4 추상화
 protocol AbstractOperation {
-    var firstNumber: Int { get }
-    var secondNumber: Int { get }
+    var firstNumber: Double { get }
+    var secondNumber: Double { get }
 }
 
 // Lv.4 추상화, 프로토콜 준수하기
@@ -11,12 +11,12 @@ protocol AbstractOperation {
 class Calculator: AbstractOperation {
     // Lv.3 Calculator 코드 수정하기
     // 프로퍼티 선언
-    var firstNumber: Int
-    var secondNumber: Int
+    var firstNumber: Double
+    var secondNumber: Double
     
     // Lv.3 Calculator 코드 수정하기
     // 이니셜라이저 추가
-    init(firstNumber: Int, secondNumber: Int) {
+    init(firstNumber: Double, secondNumber: Double) {
         self.firstNumber = firstNumber
         self.secondNumber = secondNumber
     }
@@ -24,8 +24,8 @@ class Calculator: AbstractOperation {
     // Lv.1 연산기능 구현하기
     // Lv.3 Calculator 코드 수정하기
     // 매개변수 제거
-    func calculate(operatorSymbol: String) -> Int {
-        var result: Int = 0
+    func calculate(operatorSymbol: String) -> Double {
+        var result: Double = 0
         
         // 더하기 구현
         if operatorSymbol == "+" {
@@ -41,7 +41,8 @@ class Calculator: AbstractOperation {
             result = firstNumber / secondNumber
             // Lv.2 나머지 연산 추가
         } else if operatorSymbol == "%" {
-            result = firstNumber % secondNumber
+            let intNumber = Int(firstNumber) % Int(secondNumber)
+            result = Double(intNumber)
             // Lv.2 예외처리 상황 처리하기
             // 지정되지 않은 연산자가 operatorSymbol에 들어올 경우
         } else {
@@ -67,55 +68,55 @@ class Calculator: AbstractOperation {
 // Lv.3 연산자 클래스 생성하기
 // 더하기 연산자 클래스 생성
 class AddOperation: Calculator {
-    init(first: Int, second: Int) {
+    init(first: Double, second: Double) {
         super.init(firstNumber: first, secondNumber: second)
     }
     
-    override func calculate(operatorSymbol: String = "+") -> Int {
+    override func calculate(operatorSymbol: String = "+") -> Double {
         super.calculate(operatorSymbol: operatorSymbol)
     }
 }
 
 // 빼기 연산자 클래스 생성
 class SubstractOperation: Calculator {
-    init(first: Int, second: Int) {
+    init(first: Double, second: Double) {
         super.init(firstNumber: first, secondNumber: second)
     }
     
-    override func calculate(operatorSymbol: String = "-") -> Int {
+    override func calculate(operatorSymbol: String = "-") -> Double {
         super.calculate(operatorSymbol: operatorSymbol)
     }
 }
 
 // 곱하기 연산자 클래스 생성
 class MultiplyOperation: Calculator {
-    init(first: Int, second: Int) {
+    init(first: Double, second: Double) {
         super.init(firstNumber: first, secondNumber: second)
     }
     
-    override func calculate(operatorSymbol: String = "*") -> Int {
+    override func calculate(operatorSymbol: String = "*") -> Double {
         super.calculate(operatorSymbol: operatorSymbol)
     }
 }
 
 // 나누기 연산자 클래스 생성
 class DivideOperation: Calculator {
-    init(first: Int, second: Int) {
+    init(first: Double, second: Double) {
         super.init(firstNumber: first, secondNumber: second)
     }
     
-    override func calculate(operatorSymbol: String = "/") -> Int {
+    override func calculate(operatorSymbol: String = "/") -> Double {
         super.calculate(operatorSymbol: operatorSymbol)
     }
 }
 
 // 나머지 연산자 클래스 생성
 class RemainingOperation: Calculator {
-    init(first: Int, second: Int) {
+    init(first: Double, second: Double) {
         super.init(firstNumber: first, secondNumber: second)
     }
     
-    override func calculate(operatorSymbol: String = "%") -> Int {
+    override func calculate(operatorSymbol: String = "%") -> Double {
         super.calculate(operatorSymbol: operatorSymbol)
     }
 }
